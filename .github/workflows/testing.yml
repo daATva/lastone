@@ -1,26 +1,14 @@
-name: "Deploy to Production"
-on:
-  push:
-    branches:
-      - main
+name: Test ABME
+on: push
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout the code"
-        uses: actions/checkout@v2
-      - name: "Install dependencies and build"
-        run: |
-          npm install
-          npm run build
-      - name: "Deploy to production"
-        uses: easingthemes/ssh-deploy@v2.1.5
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          command: |
-            cd /var/www/example.com
-            rm -rf *
-            cp -r /path/to/your/app/* .
-          host: your-server.com
-          username: your-ssh-username
-          port: 22
+    - name: Get the repository code
+      uses: actions/checkout@v3    #Используем action checkout из готового маркект плейса
+    - name: Install dependecies
+      run: npm ci
+    - name: Test application
+      run: npm run test
+      
+
