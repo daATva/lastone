@@ -1,32 +1,12 @@
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
-
+name: Test ABME
+on: push
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
+    - name: Get the repository code
+      uses: actions/checkout@v3
     - name: Install dependencies
-      run: npm ci
-
-    - name: Build
-      run: npm run build
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Deploy to server
-      run: |
-        # Add your deployment commands here
+      run: npm install
+    - name: Test application
+      run: npm run test
