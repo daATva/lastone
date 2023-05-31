@@ -1,19 +1,21 @@
-name: Test ABME
-run-name:${{ github.actor}} is testing out GutHub Actions
-on: push
+name: Тест ABME
+on:
+  push:
+    branches:
+      - main
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Get the repository code
-      uses: actions/checkout@v2
-    - name: Deploy to VPS
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST}}
-        username: ${{ secrets.SSH_USERNAME}}
-        password: ${{ secrets.SSH_PASSWORD}}
-        script: |
-          cd/var/www/html
-          git pull origin main
-          sudo systemctl restart nginx
+      - name: Получить код репозитория
+        uses: actions/checkout@v2
+      - name: Развернуть на VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            cd /var/www/html
+            git pull origin main
+            sudo systemctl restart nginx
