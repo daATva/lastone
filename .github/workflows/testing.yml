@@ -25,4 +25,4 @@ jobs:
           script: |
             cd /var/www/html
             git pull origin main
-            sudo systemctl restart ngin
+            sudo systemctl restart nginx
