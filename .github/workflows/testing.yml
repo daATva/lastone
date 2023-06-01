@@ -20,8 +20,8 @@ jobs:
       - name: Deploy VPS
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
+          host: 45.80.69.148
+          username: root
           key_path: C:\Users\79084\.ssh\id_rsa
           script: |
             cd /var/www/html
