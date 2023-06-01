@@ -17,13 +17,14 @@ jobs:
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
 
-      - name: Развернуть на VPS
+      - name: Deploy VPS
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          private_key: ${{ secrets.KEY }}
           script: |
             cd /var/www/html
             git pull origin main
             sudo systemctl restart nginx
+
