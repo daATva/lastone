@@ -22,7 +22,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          private_key: ${{ secrets.KEY }}
+          key_path: ${{ secrets.KEY }}
           script: |
             cd /var/www/html
             git pull origin main
