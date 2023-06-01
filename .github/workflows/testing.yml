@@ -22,7 +22,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          key_path: ${{ secrets.KEY_PATH }}
+          key_path: C:\Users\79084\.ssh\id_rsa
           script: |
             cd /var/www/html
             git pull origin main
